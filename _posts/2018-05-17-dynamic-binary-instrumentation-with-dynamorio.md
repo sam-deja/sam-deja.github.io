@@ -54,3 +54,4 @@ static void event_exit(void) {
 ```
 
 With these few functions we can get an accurate trace of a target binary. There are more examples in the excellent DynamoRIO documentation at [https://dynamorio.org/docs/API\_samples.html](https://dynamorio.org/docs/API_samples.html).
+
