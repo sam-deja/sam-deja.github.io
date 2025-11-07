@@ -66,7 +66,7 @@ There are several classes of bypass strategies:
 
 ## InvisiShell: Practical Example of a Runtime Evasion
 
-One tool we use in class is a slightly modified version of InvisiShell. InvisiShell makes specific hooks into two .NET assemblies: the PowerShell assembly and `System.Code`. These hooks can disable system-wide transcription, AMSI, and script block logging in the running session.
+One tool we use in class is a slightly modified version of InvisiShell. InvisiShell makes specific hooks into two .NET assemblies: the PowerShell assembly and `System.Core`. These hooks can disable system-wide transcription, AMSI, and script block logging in the running session.
 
 How to run it depends on privileges. If you have administrator privileges, run the admin batch file. If you do not have administrator privileges, run the non-admin batch file. Either way, the result is a PowerShell session where the targeted logging and AMSI protections are neutralized.
 
@@ -93,17 +93,12 @@ Tools such as **PowerUp** or **Invoke-Mimikatz** offer many capabilities. Someti
 
 For example, PowerUp includes an option to drop a binary into a service binary as part of a local privilege-escalation check. That binary drop is commonly detected. If you remove that specific portion of the script, the remaining functionality of PowerUp will often be enough for your measurements and will no longer trigger detection.
 
-In the student VM toolset you will find versions already modified and not detected against the November 2024 Windows Defender baseline. Use those as references to learn the methodology.
-
 ## Testing and Expectations
 
 All tools and modifications must be tested against up-to-date detection engines. The versions I share and the techniques discussed were validated against the November 2024 Windows Defender signatures. Because many detections are signature-based, they can change over time. Expect that a drop-in tool you download months later might be detected. If that happens, apply the same methodology: scan, identify the bytes or tokens causing detection, and change them.
 
 Some scripts, like `Invoke-Mimikatz`, are heavily signatured and require much more effort to obfuscate reliably. In class we rarely use heavily signatured scripts except for demonstration. For practical engagements, choose tools and approaches that match your objectives and the maturity of the target.
 
-## Focus: Identity and Active Directory over Endpoints
-
-Keep in mind the course focus: identity and Active Directory. We will spend less time on endpoint evasion and more on techniques to achieve objectives via identity, credential access, and AD misuse. Evasion techniques on endpoints are still useful and necessary, but the primary goal is not to build an endpoint evasion toolkit alone.
 
 ## Practical Recommendations
 
