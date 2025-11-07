@@ -6,7 +6,7 @@ tags: [powershell, amsi, evasion, logging, defenders, windows]
 description: How PowerShell works on modern Windows, what built-in defenses exist, and practical approaches for running, modifying, and avoiding noisy detections—so you can adapt to your target environment.
 ---
 
-In this class we rely on two major tool types. For enumeration, we use PowerShell. For almost everything else we lean on .NET or C. This article explains how PowerShell works in modern Windows environments, what built-in defenses exist, and practical approaches for running, modifying, and evading detections when needed. I will share the methods and rationale I use so you can adapt them to your target environment.
+In offensive security we rely on two major tool types. For enumeration, we use PowerShell. For almost everything else we lean on .NET or C. This article explains how PowerShell works in modern Windows environments, what built-in defenses exist, and practical approaches for running, modifying, and evading detections when needed. I will share the methods and rationale I use so you can adapt them to your target environment.
 
 ## Why PowerShell
 
