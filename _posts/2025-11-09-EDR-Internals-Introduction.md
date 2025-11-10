@@ -34,24 +34,6 @@ flowchart LR
   WFP --> EDRDrv
 ```
 
-```mermaid
-%% Architecture overview (actual diagram)
-flowchart LR
-  subgraph "User Mode"
-    ETW["ETW (Event Tracing for Windows)"]
-    HookDLLs["Hook DLLs"]
-    EDRexe["EDR.exe (user-mode)"]
-  end
-  subgraph "Kernel Mode"
-    WFP["Windows Filtering Platform (WFP)"]
-    EDRDrv["EDR Driver"]
-  end
-  ETW --> EDRexe
-  HookDLLs --> EDRexe
-  EDRDrv --> EDRexe
-  WFP --> EDRDrv
-```
-
 # Kernel Callbacks and Telemetry Sources
 
 * Kernel callbacks provide deep visibility into system behavior by tracking:
@@ -182,8 +164,7 @@ sequenceDiagram
 ```mermaid
 %% Telemetry analysis pipeline (actual diagram)
 flowchart TD
-  A[Kernel & User-mode Telemetry]
-(Callbacks, ETW, Hooks) --> B[Aggregation]
+  A["Kernel & User-mode Telemetry<br/>(Callbacks, ETW, Hooks)"] --> B[Aggregation]
   B --> C[Memory Scan]
   B --> D[DLL Injection Monitoring]
   B --> E[Debugger Attach]
