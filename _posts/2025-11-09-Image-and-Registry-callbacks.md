@@ -5,7 +5,7 @@ date: 2025-11-09 10:20:00 -0700
 categories: [security, edr]
 tags: [edr, windows, kernel, callbacks, image-load, registry]
 mermaid: true
----------
+---
 
 * Image Load Kernel Callbacks are low-level routines in the Windows kernel triggered whenever a Portable Executable (PE) image—such as `.exe`, `.dll`, or `.sys`—is loaded into memory.
 * Their main function is to notify registered drivers about image loading events, enabling monitoring and telemetry collection for image execution.
