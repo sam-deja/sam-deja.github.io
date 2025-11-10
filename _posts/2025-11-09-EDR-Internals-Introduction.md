@@ -7,8 +7,6 @@ tags: [edr, windows, kernel, etw, wfp]
 mermaid: true
 ---
 
-# EDR Internals Architecture Overview
-
 * The EDR architecture is designed to collect telemetry from both **user mode** and **kernel mode**, enabling comprehensive system monitoring and threat detection.
 * Main components include:
 
