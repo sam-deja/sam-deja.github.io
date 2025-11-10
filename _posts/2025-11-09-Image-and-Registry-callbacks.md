@@ -37,11 +37,11 @@ mermaid: true
 ```mermaid
 %% Image load callbacks: registration and dispatch
 flowchart LR
-  A[Drivers] -->|register| B[PsSetLoadImageNotifyRoutine / Ex]
-  B --> C[PspLoadImageNotifyRoutine (array)]
-  D[PE mapped (NtMapViewOfSection / LdrLoadDll)] --> E[PspCallImageNotifyRoutines]
+  A["Drivers"] -->|register| B["PsSetLoadImageNotifyRoutine / Ex"]
+  B --> C["PspLoadImageNotifyRoutine (array)"]
+  D["PE mapped<br/>(NtMapViewOfSection / LdrLoadDll)"] --> E["PspCallImageNotifyRoutines"]
   E --> C
-  C --> F[Driver callbacks invoked]
+  C --> F["Driver callbacks invoked"]
 ```
 
 ```mermaid
@@ -96,11 +96,11 @@ sequenceDiagram
 ```mermaid
 %% Registry callbacks: registration and list structure
 flowchart LR
-  A[Drivers] -->|register| B[CmRegisterCallback / Ex]
-  B --> C[CallbackListHead (doubly linked list)]
-  D[Registry syscalls (NtOpenKeyEx, NtSetValueKey,...)] --> E[CmpCallCallBacksEx]
+  A["Drivers"] -->|register| B["CmRegisterCallback / Ex"]
+  B --> C["CallbackListHead (doubly linked list)"]
+  D["Registry syscalls<br/>(NtOpenKeyEx, NtSetValueKey)"] --> E["CmpCallCallBacksEx"]
   E --> C
-  C --> F[Driver callbacks invoked]
+  C --> F["Driver callbacks invoked"]
 ```
 
 ```mermaid
