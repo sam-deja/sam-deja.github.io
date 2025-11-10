@@ -4,7 +4,7 @@ title: "EDR Internals Architecture Overview"
 date: 2025-11-09 10:00:00 -0700
 categories: [security, edr]
 tags: [edr, windows, kernel, etw, wfp]
-
+mermaid: true
 ---
 
 # EDR Internals Architecture Overview
